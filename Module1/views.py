@@ -106,7 +106,7 @@ def pie_chart(request):
             plt.pie(y_values, labels=labels, startangle=90)
             plt.savefig('static/images/pie_chart.png')  # Save the chart image
             img1={'chart_image': '/static/images/pie_chart.png'}
-            return render(request, 'piechart.html', img1)
+            return render(request, 'PieChart.html', img1)
     else:
         form = PieChartForm()
     return render(request, 'PieChart.html', {'form': form})
