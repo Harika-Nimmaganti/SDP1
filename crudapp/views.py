@@ -1,3 +1,4 @@
+
 from django.shortcuts import render, redirect
 from .models import Employee
 
@@ -41,21 +42,3 @@ def edit_emp(request, pk):
         context = {
             'employee': employee,
         }
-        return render(request, 'edit.html', context)
-
-    except Employee.DoesNotExist:
-        return render(request, 'error.html', {'message': 'Employee not found'})
-
-#Delete Employee
-from django.http import HttpResponse
-from django.shortcuts import get_object_or_404, render, redirect
-from .models import Employee
-
-def remove_emp(request, pk):
-    employee = get_object_or_404(Employee, id=pk)
-
-    if request.method == 'POST':
-        employee.delete()
-        return redirect('show-emp')
-
-    return render(request, 'delete.html', {'employee': employee})
